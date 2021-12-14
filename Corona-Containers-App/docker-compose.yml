@@ -33,4 +33,4 @@ services:
     ports:
       - "4200:4200"
     command: >
-      bash -c "npm start"
+      bash -c "ng serve --prod"
