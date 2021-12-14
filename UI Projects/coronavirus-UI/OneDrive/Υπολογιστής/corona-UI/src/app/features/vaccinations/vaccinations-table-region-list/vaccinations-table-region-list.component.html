@@ -1,0 +1,37 @@
+<div *ngIf="searchCriteriaForm"
+[formGroup]="searchCriteriaForm">
+<p-table #dt [value]="vaccinationListByAreaGr" [autoLayout]="true" [rows]="rows" [paginator]="true" [globalFilterFields]="['areaGr']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Δεδομένα Εμβολιασμών ανά Περιφερειακή Ενότητα  -  {{date | date : 'EEEE d MMMM y'}}
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Αναζήτηση Περιφέρειας" />
+            </span>
+            <p-calendar inputId="basic" id="fromDate" dateFormat="dd/mm/yy" placeholder = "Επιλέξτε Ημερομηνία"
+                formControlName="fromDate" (onSelect)="dateFrom()" (onInput)="inputFromDate($event)" clearButtonStyleClass ="p-button" showButtonBar="true" (onClearClick)="onClear()" styleClass="p-ml-2" appendTo="body"></p-calendar>
+            <div>
+                
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Περιφερειακή Ενότητα</th>
+        <th>Σύνολο εμβολιασμών</th>
+        <th>Σύνολο με τουλάχιστον 1 δόση</th>
+        <th>Σύνολο ολοκληρωμένων εμβολιασμών</th>
+        <th>Σύνολο εμβολιασμών αναμνηστικής δόσης</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-vaccinationPerRegion>
+      <tr>
+        <td>{{vaccinationPerRegion?.areaGr}}</td>
+        <td>{{vaccinationPerRegion?.sumTotalVaccinations | number | pointReplacer}}  <span [ngStyle]="checkNegative(vaccinationPerRegion?.dayDiffTotalVaccinations)?{ 'color': 'green' }:{ 'color': 'blue' }">({{vaccinationPerRegion?.dayDiffTotalVaccinations > 0? '+' : ''}}{{vaccinationPerRegion?.dayDiffTotalVaccinations | number | pointReplacer}} την {{vaccinationPerRegion?.referenceDate | date:'dd/MM/yyyy' }})</span></td>
+        <td>{{vaccinationPerRegion?.sumTotalDistinctPersons | number | pointReplacer}} <span [ngStyle]="checkNegative(vaccinationPerRegion?.dayDiffTotalDistinctPersons)?{ 'color': 'green' }:{ 'color': 'blue' }">({{vaccinationPerRegion?.dayDiffTotalDistinctPersons > 0? '+' : ''}}{{vaccinationPerRegion?.dayDiffTotalDistinctPersons | number | pointReplacer}} την {{vaccinationPerRegion?.referenceDate | date:'dd/MM/yyyy' }})</span></td>
+        <td>{{vaccinationPerRegion?.sumTotalDose2 | number | pointReplacer}} <span [ngStyle]="checkNegative(vaccinationPerRegion?.dayDiffTotalDose2)?{ 'color': 'green' }:{ 'color': 'blue' }">({{vaccinationPerRegion?.dayDiffTotalDose2 > 0? '+' : ''}}{{vaccinationPerRegion?.dayDiffTotalDose2 | number | pointReplacer}} την {{vaccinationPerRegion?.referenceDate | date:'dd/MM/yyyy' }})</span></td>
+        <td>{{vaccinationPerRegion?.sumTotalDose3 | number | pointReplacer}} <span [ngStyle]="checkNegative(vaccinationPerRegion?.dayDiffTotalDose3)?{ 'color': 'green' }:{ 'color': 'blue' }">({{vaccinationPerRegion?.dayDiffTotalDose3 > 0? '+' : ''}}{{vaccinationPerRegion?.dayDiffTotalDose3 | number | pointReplacer}} την {{vaccinationPerRegion?.referenceDate | date:'dd/MM/yyyy' }})</span></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

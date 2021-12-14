@@ -1,0 +1,38 @@
+/* You can add media styles */
+
+@media (max-width: 991px) {
+
+  //header
+  .header {
+    padding: 10px;
+  }
+
+  //main-content
+  .main-content {
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 961px) {
+
+  .hidden-left-panel {
+    display: none !important;
+  }
+
+}
+
+@media (min-width: 961px) {
+
+  .hidden-horizontal-menu {
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 960px) {
+  .sticky-menu {
+    top: -1px;
+  }
+}
+

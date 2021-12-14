@@ -1,0 +1,158 @@
+<div class="layout-dashboard">
+
+    <h2 style="text-align: center;">Ημερήσια Ανασκόπηση Εμβολιασμών Έναντι Covid-19</h2>
+    <h3 style="text-align: center;">{{lastDateVaccinationData?.updatedAt | date : 'dd/MM/yyyy'}}</h3>
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-3 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="overview-box-title">{{lastDateVaccinationData?.sumTotalVaccinations | number |
+                        pointReplacer}}</div>
+                    <div class="overview-box-total">ΕΜΒΟΛΙΑΣΜΟΙ ΕΧΟΥΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΕΙ</div>
+                    <div
+                        [ngClass]="checkNegative(lastDateVaccinationData?.dayDiffTotalVaccinations)? 'overview-box-positive-number' : 'overview-box-negative-number'">
+                        {{lastDateVaccinationData?.dayDiffTotalVaccinations >0 ? '+'
+                        +(lastDateVaccinationData?.dayDiffTotalVaccinations | number | pointReplacer) :
+                        (lastDateVaccinationData?.dayDiffTotalVaccinations | number | pointReplacer)}}&nbsp; την
+                        &nbsp;{{lastDateVaccinationData?.updatedAt | date : 'dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-3 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="overview-box-title">{{lastDateVaccinationData?.sumTotalDistinctPersons | number |
+                        pointReplacer}}</div>
+                    <div class="overview-box-total">ΕΜΒΟΛΙΑΣΜΟΙ ΜΕ ΤΟΥΛΑΧΙΣΤΟΝ 1 ΔΟΣΗ ΕΧΟΥΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΕΙ</div>
+                    <div
+                        [ngClass]="checkNegative(lastDateVaccinationData?.dayDiffTotalDistinctPersons)? 'overview-box-positive-number' : 'overview-box-negative-number'">
+                        {{lastDateVaccinationData?.dayDiffTotalDistinctPersons > 0 ? '+'
+                        +(lastDateVaccinationData?.dayDiffTotalDistinctPersons | number | pointReplacer) :
+                        lastDateVaccinationData?.dayDiffTotalDistinctPersons | number | pointReplacer}}&nbsp; την
+                        &nbsp;{{lastDateVaccinationData?.updatedAt | date : 'dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-3 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="overview-box-title">{{lastDateVaccinationData?.sumTotalDose2 | number | pointReplacer}}
+                    </div>
+                    <div class="overview-box-total">ΟΛΟΚΛΗΡΩΜΕΝΟΙ ΕΜΒΟΛΙΑΣΜΟΙ ΕΧΟΥΝ ΠΡΑΓΜΑΤΟΠΟΙΗΘΕΙ</div>
+                    <div
+                        [ngClass]="checkNegative(lastDateVaccinationData?.dayDiffTotalDose2)? 'overview-box-positive-number' : 'overview-box-negative-number'">
+                        {{lastDateVaccinationData?.dayDiffTotalDose2 >0 ? '+'
+                        +(lastDateVaccinationData?.dayDiffTotalDose2 | number | pointReplacer) :
+                        lastDateVaccinationData?.dayDiffTotalDose2 | number | pointReplacer}}&nbsp; την
+                        &nbsp;{{lastDateVaccinationData?.updatedAt | date : 'dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-3 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="overview-box-title">{{lastDateVaccinationData?.sumTotalDose3 | number | pointReplacer}}
+                    </div>
+                    <div class="overview-box-total">ΕΜΒΟΛΙΑΣΜΟΙ ΑΝΑΜΝΗΣΤΙΚΗΣ ΔΟΣΗΣ</div>
+                    <div
+                        [ngClass]="checkNegative(lastDateVaccinationData?.dayDiffTotalDose3)? 'overview-box-positive-number' : 'overview-box-negative-number'">
+                        {{lastDateVaccinationData?.dayDiffTotalDose3 > 0 ? '+' +
+                        (lastDateVaccinationData?.dayDiffTotalDose3 | number | pointReplacer) :
+                        (lastDateVaccinationData?.dayDiffTotalDose3 | number | pointReplacer)}}&nbsp; την
+                        &nbsp;{{lastDateVaccinationData?.updatedAt | date : 'dd/MM/yyyy'}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-3 p-lg-10 projects">
+            <div class="card project" style="margin-top: 30px
+                        ;">
+                <h2 style="
+                            font-weight: 600;
+                            /* line-height: 1.5; */
+                            color: #272c33;
+                            font-size: 1.999rem;
+                            margin: 5px;
+                            line-height: 1.5;">{{lastDateVaccinationData?.percentageFullyVaccinated}}%</h2>
+                <div class="project-title"><strong style="font-weight : 500; color:black;">Πλήρως Εμβολιασμένοι
+                        Πολίτες</strong></div>
+                <p style="    color: rgba(39, 44, 51, .5) !important;">Το ποσοστό αυτό αφορά πολίτες που έχουν
+                    ολοκληρώσει και τις δύο δόσεις του εμβολίου ή τη μία μόνο δόση εφόσον πρόκειται για μονοδοσικό
+                    εμβόλιο. </p>
+                <div class="project-progress project-progress-1 fully-vaccinated">
+                    <p-progressBar [value]="lastDateVaccinationData?.percentageFullyVaccinated" [showValue]="false">
+                    </p-progressBar>
+                </div>
+            </div>
+
+            <div class="card project">
+                <h2 style="
+                            font-weight: 600;
+                            /* line-height: 1.5; */
+                            color: #272c33;
+                            font-size: 1.999rem;
+                            line-height: 1.5;">{{lastDateVaccinationData?.percentageSemiVaccinated}}%</h2>
+                <div class="project-title"><strong style="font-weight : 500; color:black;">Μερικώς Εμβολιασμένοι
+                        Πολίτες</strong></div>
+                <p style="    color: rgba(39, 44, 51, .5) !important;">Το ποσοστό αυτό αφορά πολίτες που έχουν
+                    πραγματοποιήσει τουλάχιστον μία δόση εμβολίου.</p>
+                <div class="project-progress project-progress-1 semi-vaccinated">
+                    <p-progressBar [value]="lastDateVaccinationData?.percentageSemiVaccinated" [showValue]="false">
+                    </p-progressBar>
+                </div>
+            </div>
+
+            <div class="card project">
+                <h2 style="
+                            font-weight: 600;
+                            /* line-height: 1.5; */
+                            color: #272c33;
+                            font-size: 1.999rem;
+                            line-height: 1.5;">{{lastDateVaccinationData?.percentageThirdDoseVaccinated}}%</h2>
+                <div class="project-title"><strong style="font-weight : 500; color:black;">Πολίτες Εμβολιασμένοι με την
+                        Αναμνήστικη Δόση</strong></div>
+                <p style="color: rgba(39, 44, 51, .5) !important;">Το ποσοστό αυτό αφορά πολίτες που έχουν
+                    πραγματοποιήσει την αναμνηστική δόση του εμβολίου.</p>
+                <div class="project-progress project-progress-1 third-vaccination">
+                    <p-progressBar [value]="lastDateVaccinationData?.percentageThirdDoseVaccinated" [showValue]="false">
+                    </p-progressBar>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="p-grid p-jc-center" style="margin-top: 30px;">
+        <div class="p-col-12 p-md-3 p-lg-8 payments">
+            <app-vaccinations-line-chart></app-vaccinations-line-chart>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="p-grid p-jc-center" style="margin-top: 30px;">
+        <div class="p-col-12 p-md-3 p-lg-10 payments">
+            <div class="card">
+                <app-vaccinations-table-region-list></app-vaccinations-table-region-list>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

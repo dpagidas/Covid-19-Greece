@@ -1,0 +1,72 @@
+<div class="layout-topbar">
+    <a href="#" class="layout-topbar-logo">
+        <img id="topbar-logo" src="assets/layout/images/covid-19-2.png">
+    </a>
+
+    <a href="#" class="layout-menu-button" (click)="mainPage.onMenuButtonClick($event)">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <!-- <a href="#" class="layout-topbar-user" (click)="mainPage.onTopbarMenuButtonClick($event)">
+        <img src="assets/layout/images/avatar.png" alt="olympia-layout" />
+    </a> -->
+
+    <ul  class="layout-topbar-usermenu" [ngClass]="{'layout-topbar-usermenu-active fadeInDown': mainPage.topbarMenuActive}">
+        <li class="layout-topbar-usermenu-header">
+            <img src="assets/layout/images/avatar.png" alt="olympia-layout" />
+            <div class="layout-topbar-usermenu-info">
+                <div class="layout-topbar-usermenu-name">Jane Watson</div>
+                <div class="layout-topbar-usermenu-role">Administrator</div>
+            </div>
+        </li>
+        <li>
+            <a href="#" (click)="mainPage.onTopbarSubItemClick($event)">
+                <i class="pi pi-fw pi-user"></i>
+                <span class="topbar-item-name">Profile</span>
+            </a>
+        </li>
+        <li #settings>
+            <a href="#">
+                <i class="pi pi-fw pi-cog"></i>
+                <span class="topbar-item-name">Settings</span>
+            </a>
+        </li>
+        <li #messages>
+            <a href="#">
+                <i class="pi pi-fw pi-envelope"></i>
+                <span class="topbar-item-name">Messages</span>
+            </a>
+        </li>
+        <li #notifications>
+            <a href="#">
+                <i class="pi pi-fw pi-bell"></i>
+                <span class="topbar-item-name">Notifications</span>
+            </a>
+        </li>
+    </ul>
+
+    <!-- <ul class="layout-topbar-icons">
+        <li class="layout-topbar-search-item">
+            <div class="layout-topbar-search">
+                <i class="pi pi-search"></i>
+                <input type="text" placeholder="Search"/>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="layout-topbar-icon-purple">
+                <i class="pi pi-file-o"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="layout-topbar-icon-yellow">
+                <i class="pi pi-calendar"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="layout-topbar-icon-green">
+                <i class="pi pi-bell"></i>
+            </a>
+        </li>
+    </ul> -->
+
+</div>

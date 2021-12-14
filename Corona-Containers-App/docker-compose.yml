@@ -1,0 +1,36 @@
+version : '3.5'
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: ../Idea Projects/coronavirus-thesis-api
+    container_name: corona-backend
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://corona-database:5432/corona-docker-db
+      - SPRING_DATASOURCE_USERNAME=corona-docker-db
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: corona-database
+    environment:
+      - POSTGRES_USER=corona-docker-db
+      - POSTGRES_PASSWORD=1234
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "6543:5432"
+  angular-service:
+    container_name: corona-UI
+    build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
+    depends_on:
+      - db-app
+    ports:
+      - "4200:4200"
+    command: >
+      bash -c "npm start"

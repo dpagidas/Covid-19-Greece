@@ -1,0 +1,27 @@
+<div *ngIf="searchCriteriaForm"
+[formGroup]="searchCriteriaForm">
+<div class="card">
+    <h4 style="text-align: center;">Διάγραμμα Πορείας Covid-19 στην Ελλάδα </h4>
+    <div class="p-grid p-jc-center" style="margin-top: 40px;">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="monthpicker">From Date</label>
+                <p-calendar inputId="basic" id="fromDate" dateFormat="dd/mm/yy" [maxDate]="searchCriteriaForm.get('toDate').value"
+                formControlName="fromDate" (onSelect)="dateFrom()" (onInput)="inputFromDate($event)" clearButtonStyleClass ="p-button" showButtonBar="true" (onClearClick)="onClear()"></p-calendar>
+            </div>
+            <div class="p-field p-col">
+                <label for="monthpicker">To Date</label>
+                <p-calendar inputId="basic" id="toDate" dateFormat="dd/mm/yy" [minDate]="searchCriteriaForm.get('fromDate').value"
+                formControlName="toDate" (onSelect)="dateTo()" (onInput)="inputToDate($event)" clearButtonStyleClass ="p-button" showButtonBar="true" (onClearClick)="onClear()"></p-calendar>
+            </div>
+    </div>
+        
+    </div>
+    
+    <div class="p-grid" style="text-align: center;">
+        <div class="p-col-12" style="margin-top: 25px;">
+            <p-chart type="line" [data]="basicData" ></p-chart>
+        </div>
+    </div>
+
+</div></div>

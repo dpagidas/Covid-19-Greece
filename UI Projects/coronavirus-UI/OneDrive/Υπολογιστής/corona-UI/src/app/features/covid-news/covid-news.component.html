@@ -1,0 +1,34 @@
+<div class="p-grid p-nogutter">
+    <div class="p-col main-content">
+
+      <h2 style="text-align: center;">Ειδήσεις Σχετικά για τον Covid-19</h2>
+  
+      <div class="p-grid p-nogutter p-pt-5 p-pb-5 p-jc-center" *ngFor="let item of covid19News">
+        <p-card  header={{item?.title}} subheader= {{item?.publishedAt}} [style]="{width: '1000px'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img *ngIf="item?.urlToImage" height="600" alt="Card" src={{item?.urlToImage}}>
+        </ng-template>
+          <div class="special" (click)="openWebsite(item?.url)" >
+          <p>{{item?.description}}</p>
+          <ng-template pTemplate="footer">
+              <p-button label="Save" icon="pi pi-check"></p-button>
+              <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+          </ng-template>
+            </div>
+            
+        </p-card>
+            
+          </div>
+
+          <div class="p-grid p-nogutter p-pt-5 p-pb-5 p-jc-center" >
+            <p-paginator class="p-col-8"[rows]="5" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)"></p-paginator>
+            </div>
+  
+    </div>
+  </div>
+
+
+
+  
+  
+  

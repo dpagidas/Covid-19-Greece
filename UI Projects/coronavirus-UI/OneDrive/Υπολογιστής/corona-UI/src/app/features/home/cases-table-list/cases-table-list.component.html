@@ -1,0 +1,31 @@
+<div *ngIf="searchCriteriaForm"
+[formGroup]="searchCriteriaForm">
+<p-table #dt [value]="casesListResults" [autoLayout]="true" [rows]="rows" [paginator]="true" [globalFilterFields]="['areaGr']">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            Δεδομένα Κρουσμάτων ανά Περιφερειακή Ενότητα  -  {{date | date : 'EEEE d MMMM y'}}
+            <span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Αναζήτηση Περιφέρειας"/>
+            </span>
+
+            <p-calendar inputId="basic" id="fromDate" dateFormat="dd/mm/yy" placeholder = "Επιλέξτε Ημερομηνία"
+                formControlName="fromDate" (onSelect)="dateFrom()" (onInput)="inputFromDate($event)" clearButtonStyleClass ="p-button" showButtonBar="true" (onClearClick)="onClear()" styleClass="p-ml-2" appendTo="body"></p-calendar>
+            <div>
+                
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Περιφερειακή Ενότητα</th>
+        <th>Κρούσματα</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-caseByRegion>
+      <tr>
+        <td>{{caseByRegion?.areaGr}}</td>
+        <td>{{caseByRegion?.cases | number | pointReplacer}}  <span [ngStyle]="checkNegative(caseByRegion?.diffCases)?{ 'color': 'green' }:{ 'color': 'blue' }">({{caseByRegion?.diffCases > 0? '+' : ''}}{{caseByRegion?.diffCases | number | pointReplacer}} την {{caseByRegion?.date | date:'dd/MM/yyyy' }})</span></td>
+    </ng-template>
+  </p-table>
+</div>

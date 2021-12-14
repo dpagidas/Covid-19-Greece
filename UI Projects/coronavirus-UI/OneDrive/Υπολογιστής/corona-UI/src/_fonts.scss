@@ -1,0 +1,35 @@
+/* You can add fonts */
+
+// @font-face {
+//   font-family: "CharterITCW05";
+//   src: url("assets/fonts/CharterITCW05-Regular.woff") format("woff");
+// }
+
+/*@font-face {
+  font-family: "HelveticaNeue";
+  src: url("assets/fonts/HelveticaNeue-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PragmaticaMedium";
+  src: url("assets/fonts/PragmaticaMedium.otf") format("opentype");
+}*/
+
+
+:host ::ng-deep {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "CharterITCW05";
+  }
+
+  /*label, .p-button, th {
+    font-family: "PragmaticaMedium";
+    font-weight: 100;
+  }*/
+
+  /** {
+    :not(h1, h2, h3, h4, h5, h6, label, .p-button, th, .pi) {
+      font-family: "HelveticaNeue";
+      font-weight: 600;
+    }
+  }*/
+}

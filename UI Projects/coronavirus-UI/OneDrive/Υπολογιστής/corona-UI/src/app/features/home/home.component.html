@@ -1,0 +1,230 @@
+<div class="layout-dashboard">
+
+    <h2 style="text-align: center;">Ημερήσια Ανασκόπηση Covid-19</h2>
+    <h3 style="text-align: center;">{{todayCases?.date | date:'dd/MM/yyyy'}}</h3>
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="overview-box-title">{{todayCases?.lastDateCases | number | pointReplacer }}</div>
+                    <div class="overview-box-total">ΣΥΝΟΛΟ: {{todayCases?.totalCases | number | pointReplacer}}</div>
+                    <div class="overview-box-details">ΚΡΟΥΣΜΑΤΑ</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <p-table>
+                    <ng-template pTemplate="header">
+                        <tr class="row-expansion">
+                            <td [attr.colspan]="1" class="labels">
+                                <div class="pcr">PCR</div>
+                                <div class="rpt">RPT</div>
+                            </td>
+                            <td [attr.colspan]="2" class="labels">
+                                <div class="pcr-number">{{todayTests?.tests | number | pointReplacer}}</div>
+                                <div class="rpt-number">{{todayTests?.rapidTests | number | pointReplacer}}</div>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <div class="overview-box-content">
+                    <div class="overview-box-total">ΣΥΝΟΛΟ: {{todayTests?.allTests | number | pointReplacer}}</div>
+                    <div class="overview-box-details">ΔΕΙΓΜΑΤΑ</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="intensive-care-number">{{intensiveCare?.intensive_care | number | pointReplacer}}</div>
+                    <div class="intensive-care">ΔΙΑΣΩΛΗΝΩΜΕΝΟΙ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="today-cases-number">{{todayCases?.positivityIndex | number | pointReplacer }} %</div>
+                    <div class="positivity-index">ΔΕΙΚΤΗΣ ΘΕΤΙΚΟΤΗΤΑΣ</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-lg-4">
+            <div class="overview-box overview-box-sales">
+                <div class="overview-box-content">
+                    <div class="confirmed-deaths-number">{{confirmedDeaths?.deathsPerDay | number | pointReplacer}}</div>
+                    <div class="overview-box-total">ΣΥΝΟΛΟ: <span style="color: #d63031;">{{confirmedDeaths?.allDeaths |
+                            number | pointReplacer}}</span></div>
+                    <div class="overview-box-details">ΑΠΩΛΕΙΕΣ</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="p-grid p-jc-center">
+        <div class="p-col-12 p-md-3 p-lg-10 payments">
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 10px; margin-top: 10px;">Ηλικιακή Κατανομή Κρουσμάτων
+                    Covid-19</h3>
+                <h4 style="text-align: center;">{{this.genderAgeDistribution?.updateAt | date:'dd/MM/yyyy'}}</h4>
+                <div class="p-grid" style="text-align: center;">
+                    <div class="p-col-6" style="margin-top: 25px;">
+                        <p-chart type="pie" [data]="dataDeaths" [options]="options" width="400" height="200"></p-chart>
+                    </div>
+                    <div class="p-col-6">
+                        <h6 style="margin-top: 20px; color: black;"><b>Απώλειες</b></h6>
+                        <div class="p-grid" style="margin-top: 25px;">
+                            <div class="p-col-6"><span class="dot dot-blue" style="margin-left: -0.5em"></span>0-17
+                            </div>
+                            <div class="p-col-6"><span>{{this.genderAgeDistribution?.females?.deaths?.age_0_17 +
+                                    this.genderAgeDistribution?.males?.deaths?.age_0_17 | number |
+                                    pointReplacer}}</span></div>
+                            <div class="p-col-6"><span class="dot dot-red"></span>18-39</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.deaths?.age_18_39 +
+                                this.genderAgeDistribution?.males?.deaths?.age_18_39 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-purple"></span>40-64</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.deaths?.age_40_64 +
+                                this.genderAgeDistribution?.males?.deaths?.age_40_64 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-yellowdark"
+                                    style="margin-left: -0.89em"></span>65+</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.deaths?.age_65 +
+                                this.genderAgeDistribution?.males?.deaths?.age_65 | number | pointReplacer}} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-grid" style="text-align: center;">
+                    <div class="p-col-6" style="margin-top: 25px;">
+                        <p-chart type="pie" [data]="dataCritical" [options]="options" width="400" height="200">
+                        </p-chart>
+                    </div>
+                    <div class="p-col-6">
+                        <h6 style="margin-top: 20px; color: black;"><b>Διασωληνομένοι</b></h6>
+                        <div class="p-grid" style="margin-top: 25px;">
+                            <div class="p-col-6"><span class="dot dot-blue" style="margin-left: -0.5em"></span>0-17
+                            </div>
+                            <div class="p-col-6"><span>{{this.genderAgeDistribution?.females?.critical?.age_0_17 +
+                                    this.genderAgeDistribution?.males?.critical?.age_0_17 | number |
+                                    pointReplacer}}</span></div>
+                            <div class="p-col-6"><span class="dot dot-red"></span>18-39</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.critical?.age_18_39 +
+                                this.genderAgeDistribution?.males?.critical?.age_18_39 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-purple"></span>40-64</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.critical?.age_40_64 +
+                                this.genderAgeDistribution?.males?.critical?.age_40_64 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-yellowdark"
+                                    style="margin-left: -0.89em"></span>65+</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.critical?.age_65 +
+                                this.genderAgeDistribution?.males?.critical?.age_65 | number | pointReplacer}} </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid" style="text-align: center;">
+                    <div class="p-col-6" style="margin-top: 25px;">
+                        <p-chart type="pie" [data]="dataCases" [options]="options" width="400" height="200"></p-chart>
+                    </div>
+                    <div class="p-col-6">
+                        <h6 style="margin-top: 20px; color: black;"><b>Κρούσματα</b></h6>
+                        <div class="p-grid" style="margin-top: 25px;">
+                            <div class="p-col-6"><span class="dot dot-blue" style="margin-left: -0.5em"></span>0 -17
+                            </div>
+                            <div class="p-col-6"><span>{{this.genderAgeDistribution?.females?.cases?.age_0_17 +
+                                    this.genderAgeDistribution?.males?.cases?.age_0_17 | number | pointReplacer}}</span>
+                            </div>
+                            <div class="p-col-6"><span class="dot dot-red"></span>18-39</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.cases?.age_18_39 +
+                                this.genderAgeDistribution?.males?.cases?.age_18_39 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-purple"></span>40-64</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.cases?.age_40_64 +
+                                this.genderAgeDistribution?.males?.cases?.age_40_64 | number | pointReplacer}} </div>
+                            <div class="p-col-6"><span class="dot dot-yellowdark"
+                                    style="margin-left: -0.89em"></span>65+</div>
+                            <div class="p-col-6">{{this.genderAgeDistribution?.females?.deaths?.age_65 +
+                                this.genderAgeDistribution?.males?.deaths?.age_65 | number | pointReplacer}} </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid p-jc-center" style="margin-top: 30px
+                ;">
+                    <div class="p-col-12 p-md-3 p-lg-10 payments">
+                        <div class="card" style="background: #f4f4f4;">
+                            <div class="p-grid" style="text-align: center;">
+                                <div class="p-col-3" style="margin-top: 25px;">
+                                    <div class="overview-box-content">
+                                        <div style="margin-top: 10px;"><img width="100" height="100"
+                                                src="assets/layout/images/dashboard/female-icon.png"></div>
+                                        <div class="gender-age-distribution">
+                                            {{(this.genderAgeDistribution?.females?.cases?.age_0_17 +
+                                            this.genderAgeDistribution?.females?.cases?.age_18_39 +
+                                            this.genderAgeDistribution?.females?.cases?.age_40_64 +
+                                            this.genderAgeDistribution?.females?.deaths?.age_65) | number |
+                                            pointReplacer}}</div>
+                                    </div>
+                                </div>
+                                <div class="p-col-3">
+                                    <div class="p-grid" style="margin-top: 80px;">
+                                        <p>Το &nbsp;<b
+                                                style="color: black;">{{this.genderAgeDistribution?.femalePercentageAgeDistribution}}%</b>&nbsp;
+                                            των κρουσμάτων <br> αφορά γυναίκες.</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-col-3" style="margin-top: 25px;">
+                                    <div class="overview-box-content">
+                                        <div style="margin-top: 10px;"><img width="100" height="100"
+                                                src="assets/layout/images/dashboard/male-icon.png"></div>
+                                        <div class="gender-age-distribution">
+                                            {{(this.genderAgeDistribution?.males?.cases?.age_0_17 +
+                                            this.genderAgeDistribution?.males?.cases?.age_18_39 +
+                                            this.genderAgeDistribution?.males?.cases?.age_40_64 +
+                                            this.genderAgeDistribution?.males?.deaths?.age_65) | number |
+                                            pointReplacer}}</div>
+                                    </div>
+                                </div>
+                                <div class="p-col-3">
+                                    <div class="p-grid" style="margin-top: 80px;">
+                                        <p>Το &nbsp;<b
+                                                style="color: black;">{{this.genderAgeDistribution?.malePercentageAgeDistribution}}%</b>&nbsp;
+                                            των κρουσμάτων <br> αφορά άντρες.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-grid p-jc-center" style="margin-top: 30px;">
+        <div class="p-col-12 p-md-3 p-lg-10 payments">
+            <app-cases-bar-chart></app-cases-bar-chart>
+        </div>
+    </div>
+
+
+    <div class="p-grid p-jc-center" style="margin-top: 30px;">
+        <div class="p-col-12 p-md-3 p-lg-10 payments">
+            <app-cases-table-list></app-cases-table-list>
+        </div>
+    </div>
+
+
+    
+
+
+</div>
