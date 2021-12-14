@@ -28,8 +28,8 @@ services:
   angular-service:
     container_name: corona-UI
     build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
-    depends_on:
-      - app
+    # depends_on:
+    #   - app
     ports:
       - "4200:4200"
     command: >
