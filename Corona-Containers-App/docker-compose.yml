@@ -7,7 +7,7 @@ services:
       context: ../Idea Projects/coronavirus-thesis-api
     container_name: corona-backend
     depends_on:
-      - db
+      - "db"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://corona-database:5432/corona-docker-db
       - SPRING_DATASOURCE_USERNAME=corona-docker-db
@@ -29,7 +29,7 @@ services:
     container_name: corona-UI
     build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
     depends_on:
-      - db-app
+      - "db-app"
     ports:
       - "4200:4200"
     command: >
