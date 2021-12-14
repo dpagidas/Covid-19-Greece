@@ -10,11 +10,11 @@ services:
       - "4200:4200"
     command: >
       bash -c "npm start"
-  docker-nginx:
-    container_name: docker-nginx
-    build: ./
-    ports:
-      - "80:80"
-    command: ["nginx", "-g", "daemon off;"]
-    links:
-      - angular-service
+  # docker-nginx:
+  #   container_name: docker-nginx
+  #   build: ./
+  #   ports:
+  #     - "80:80"
+  #   command: ["nginx", "-g", "daemon off;"]
+  #   links:
+  #     - angular-service
