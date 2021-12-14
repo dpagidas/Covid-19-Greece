@@ -33,4 +33,4 @@ services:
     ports:
       - "4200:4200"
     command: >
-      "ng serve --prod"
+      bash -c "npm install && ng serve --prod"
