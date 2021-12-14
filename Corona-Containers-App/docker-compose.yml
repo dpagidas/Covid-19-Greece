@@ -25,12 +25,12 @@ services:
       - ./init:/docker-entrypoint-initdb.d
     ports:
       - "6543:5432"
-  angular-service:
-    container_name: corona-UI
-    build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
-    # depends_on:
-    #   - app
-    ports:
-      - "4200:4200"
-    command: >
-      bash -c "npm start"
+  # angular-service:
+  #   container_name: corona-UI
+  #   build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
+  #   # depends_on:
+  #   #   - app
+  #   ports:
+  #     - "4200:4200"
+  #   command: >
+  #     bash -c "npm start"
