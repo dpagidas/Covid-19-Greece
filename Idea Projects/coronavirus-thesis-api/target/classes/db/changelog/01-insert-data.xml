@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="dpagidas">
+        <sql>
+            INSERT INTO corona.platform_configuration VALUES
+            (1, 'REGION_CASE_HISTORY_NEWS_LAST_UPDATE', null,'Timestamp'),
+            (2, 'VACCINATION_INFO_LAST_UPDATE', null,'Timestamp'),
+            (3, 'COVID19_NEWS_LAST_UPDATE', null,'Timestamp'),
+            (4, 'CONFIRMED_CASES_LAST_UPDATE', null,'Timestamp'),
+            (5, 'CONFIRMED_DEATHS_LAST_UPDATE', null,'Timestamp'),
+            (6, 'GENDER_AGE_LAST_UPDATE', null,'Timestamp'),
+            (7, 'INTENSIVE_CARE_LAST_UPDATE', null,'Timestamp'),
+            (8, 'TOTAL_TESTS_LAST_UPDATE', null,'Timestamp');
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
