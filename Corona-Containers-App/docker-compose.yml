@@ -29,7 +29,7 @@ services:
     container_name: corona-UI
     build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
     depends_on:
-      - app
+      - db-app
     ports:
       - "4200:4200"
     command: >
