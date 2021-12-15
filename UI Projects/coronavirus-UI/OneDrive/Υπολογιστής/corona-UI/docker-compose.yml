@@ -7,7 +7,7 @@ services:
     # volumes:
     # - './:/usr/src/app'
     ports:
-      - "4200:80"
+      - "4200:4200"
   # docker-nginx:
   #   container_name: docker-nginx
   #   build: ./

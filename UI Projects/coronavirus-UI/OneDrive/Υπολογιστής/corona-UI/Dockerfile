@@ -4,11 +4,7 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY . /app
-RUN npm run build --prod
-
-FROM nginx:1.20.1
-COPY --from=build-step /app/dist/Lafarge-Client-UI /usr/share/nginx/html
-EXPOSE 4200:80
+CMD ng serve --prod
 
 
 # CMD ["npm" , "start"]
