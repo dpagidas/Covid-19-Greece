@@ -37,39 +37,8 @@ public class CronJobConfig {
 
 //    @Scheduled(cron = "0 0/1 * * * *")
 
-//    @Scheduled(cron = "0 00 04 * * ?")
-//    public void scheduleFixedDelayTask() {
-//        covidCasesPerRegion.fetchAndSaveCovidCaseRegionHistory();
-//        vaccinationInfoService.fetchAndSaveVaccinationHistory();
-//        covid19NewsInfoService.fetchAndSaveCovid19News();
-//        genderAgeDistributionService.fetchAndSaveGenderAgeDistributionHistory();
-//        intensiveCareService.fetchAndSaveIntensiveCareCases();
-//        confirmedCasesService.fetchAndSaveConfirmedCases();
-//        totalTestsService.fetchAndSaveTotalTests();
-//        confirmedDeathsService.fetchAndSaveConfirmedDeaths();
-//    }
-//
-//
-//    @Scheduled(cron = "0 00 16 * * ?")
-//    public void scheduleTask() {
-//        covidCasesPerRegion.fetchAndSaveCovidCaseRegionHistory();
-//        vaccinationInfoService.fetchAndSaveVaccinationHistory();
-//        covid19NewsInfoService.fetchAndSaveCovid19News();
-//        genderAgeDistributionService.fetchAndSaveGenderAgeDistributionHistory();
-//        intensiveCareService.fetchAndSaveIntensiveCareCases();
-//        confirmedCasesService.fetchAndSaveConfirmedCases();
-//        totalTestsService.fetchAndSaveTotalTests();
-//        confirmedDeathsService.fetchAndSaveConfirmedDeaths();
-//    }
-
-//    @Scheduled(cron = "0 0/30 * * * *")
-//    public void scheduleTaskCovid19News() {
-//        covid19NewsInfoService.fetchAndSaveCovid19News();
-//    }
-
-
-    @Scheduled(cron = "0 0/2 * * * *")
-    public void scheduleTaskCovid19News() {
+    @Scheduled(cron = "0 00 04 * * ?")
+    public void scheduleFixedDelayTask() {
         covidCasesPerRegion.fetchAndSaveCovidCaseRegionHistory();
         vaccinationInfoService.fetchAndSaveVaccinationHistory();
         covid19NewsInfoService.fetchAndSaveCovid19News();
@@ -78,6 +47,23 @@ public class CronJobConfig {
         confirmedCasesService.fetchAndSaveConfirmedCases();
         totalTestsService.fetchAndSaveTotalTests();
         confirmedDeathsService.fetchAndSaveConfirmedDeaths();
+    }
 
+
+    @Scheduled(cron = "0 00 16 * * ?")
+    public void scheduleTask() {
+        covidCasesPerRegion.fetchAndSaveCovidCaseRegionHistory();
+        vaccinationInfoService.fetchAndSaveVaccinationHistory();
+        covid19NewsInfoService.fetchAndSaveCovid19News();
+        genderAgeDistributionService.fetchAndSaveGenderAgeDistributionHistory();
+        intensiveCareService.fetchAndSaveIntensiveCareCases();
+        confirmedCasesService.fetchAndSaveConfirmedCases();
+        totalTestsService.fetchAndSaveTotalTests();
+        confirmedDeathsService.fetchAndSaveConfirmedDeaths();
+    }
+
+    @Scheduled(cron = "0 0/30 * * * *")
+    public void scheduleTaskCovid19News() {
+        covid19NewsInfoService.fetchAndSaveCovid19News();
     }
 }
