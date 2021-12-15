@@ -1,15 +1,13 @@
-version : '3.5'
+version : '3.7'
 
 services:
   angular-service:
     container_name: corona-UI-container
-    build: ./
-    volumes:
-    - './:/usr/src/app'
+    build: .
+    # volumes:
+    # - './:/usr/src/app'
     ports:
-      - "4200:4200"
-    command: >
-      bash -c "npm start"
+      - "4200:80"
   # docker-nginx:
   #   container_name: docker-nginx
   #   build: ./
