@@ -32,5 +32,6 @@ services:
     #   - app
     ports:
       - "4200:4200"
+    hostname: corona-in-greece.eu
     # command: >
     #   bash -c "npm start"
