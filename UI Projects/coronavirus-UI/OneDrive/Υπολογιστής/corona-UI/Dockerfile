@@ -1,10 +1,7 @@
-FROM node:14
-
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-RUN npm install -g angular/cli@1.7.1
-
+FROM node:14 as node
+WORKDIR /app
+COPY . .
+RUN npm install
 COPY . /usr/src/app
 
 CMD ng serve --prod
