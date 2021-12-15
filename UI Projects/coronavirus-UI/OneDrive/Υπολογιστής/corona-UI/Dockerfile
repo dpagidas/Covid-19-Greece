@@ -2,8 +2,10 @@ FROM node:14 as node
 WORKDIR /app
 COPY . .
 RUN npm install
-COPY . /usr/src/app
+RUN npm run build --prod
 
-CMD ng serve --prod
+FROM nginx:alpine
+COPY --from=node /app/dist/Lafarge-Client-UI /usr/share/nginx/html
+
 
 # CMD ["npm" , "start"]
