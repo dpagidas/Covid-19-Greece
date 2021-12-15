@@ -5,7 +5,7 @@ COPY package.json /app
 RUN npm install
 RUN npm install -g @angular/cli
 COPY . /app
-CMD ng serve --prod
+CMD ng serve --host 167.172.100.171 --prod
 
 
 # CMD ["npm" , "start"]
