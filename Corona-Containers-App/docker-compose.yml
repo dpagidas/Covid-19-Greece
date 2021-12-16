@@ -1,7 +1,7 @@
 version : '3.5'
 
 services:
- nginx:
+ app:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
