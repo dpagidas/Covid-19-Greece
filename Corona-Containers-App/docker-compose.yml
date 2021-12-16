@@ -1,6 +1,16 @@
 version : '3.5'
 
 services:
+ nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
   app:
     image: 'docker-spring-boot-postgres:latest'
     build:
@@ -15,6 +25,7 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     ports:
       - "8080:8080"
+  
   db:
     image: 'postgres:13.1-alpine'
     container_name: corona-database
