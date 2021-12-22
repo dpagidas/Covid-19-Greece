@@ -56,6 +56,7 @@ com\unipi\application\corona\service\ConfirmedDeathsServiceImpl$SortByDate.class
 com\unipi\application\corona\apis\ConfirmedDeathsApi\service\ConfirmedDeathsApiService.class
 com\unipi\application\corona\dto\VaccinationInfoLastDateReturn.class
 com\unipi\application\corona\apis\GenderAgeDistributionApi\dto\Males.class
+com\unipi\application\corona\CoronaApplication$1.class
 com\unipi\application\corona\apis\TotalTestsApi\controller\TotalTestsApiController.class
 com\unipi\application\corona\models\repository\PlatformConfigurationRepository.class
 com\unipi\application\corona\apis\RegionCasesHistory\dto\RegionCasesHistoryDto.class
