@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors().configurationSource(corsConfigurationSource());
+        http.requiresChannel().anyRequest().requiresSecure();
         http.authorizeRequests().antMatchers("/**").permitAll();
     }
 
