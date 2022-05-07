@@ -10,7 +10,6 @@
 ## About The Project
 
 ![](corona-UI/src/assets/layout/images/Screenshot-1.png)
-![](corona-UI/src/assets/layout/images/Screenshot-2.png)
 
 We build a web application for reviewing the situation of Covid-19 in
 Greece having as data the daily information from the Ministry regarding the vaccinations as well as about the situation of cases, losses, intubated. The above web application aims to quickly inform citizens about the situation in the country in which they are in order to ensure their safety
