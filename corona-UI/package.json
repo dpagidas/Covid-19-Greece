@@ -22,7 +22,7 @@
     "@angular/router": "~11.2.4",
     "chart.js": "^2.9.4",
     "chartjs-plugin-labels": "^1.1.0",
-    "glob-parent": "^5.1.2",
+    "glob-parent": "^6.0.2",
     "moment": "^2.29.1",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
