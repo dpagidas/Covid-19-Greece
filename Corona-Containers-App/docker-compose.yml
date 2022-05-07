@@ -4,7 +4,7 @@ services:
   app:
     image: 'docker-spring-boot-postgres:latest'
     build:
-      context: ../Idea Projects/coronavirus-thesis-api
+      context: ../coronavirus-thesis-api
     container_name: corona-backend
     depends_on:
       - db
@@ -27,21 +27,20 @@ services:
       - "6543:5432"
   angular-service:
     container_name: corona-UI
-    build: ../UI Projects/coronavirus-UI/OneDrive/Υπολογιστής/corona-UI
-    # depends_on:
-    #   - app
+    build: ../corona-UI
+    depends_on:
+      - app
     ports:
       - "4200:4200"
-    hostname: corona-in-greece.eu
-    # command: >
-    #   bash -c "npm start"
-  nginx-service:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
+    # hostname: corona-in-greece.eu
+    # in order to use in production and connect to domain
+  # nginx-service:
+  #   image: 'jc21/nginx-proxy-manager:latest'
+  #   restart: unless-stopped
+  #   ports:
+  #     - '80:80'
+  #     - '81:81'
+  #     - '443:443'
+  #   volumes:
+  #     - ./data:/data
+  #     - ./letsencrypt:/etc/letsencrypt
