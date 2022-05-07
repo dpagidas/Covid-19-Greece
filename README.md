@@ -35,13 +35,13 @@ in any kind of movement.
    Docker-Compose (https://docs.docker.com/compose/install/).
 2. Navigate to (https://newsapi.org/register) and register to take API key.
 3. Clone the repository:
-   `git clone https://scm.cms.hu-berlin.de/callidus/machina-callida.git`.
+   `git clone https://github.com/dpagidas/docker-corona-website.git`.
 4. Move to this file and paste your api key to NewsApi.ApiKey variable:
    `coronavirus-thesis-api/src/main/resources/application.properties`.
 5. Move to folder from terminal:
    `cd Corona-Containers-App`.
 6. Run from terminal:
-   `cd machina-callida`.
+   `docker-compose up`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
